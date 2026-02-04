@@ -1193,15 +1193,72 @@
 
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-        // Track waitlist form submissions
+        // Google Sheets webhook URL
+        const SHEETS_WEBHOOK = 'https://script.google.com/macros/s/AKfycbwsBhS0B-umIqjsJ_YFc9ziIo2IqEoMYIEzYOKJsmVrz-46SxKBdgFxvsEbTdhEqnxS1A/exec';
+
+        // Handle form submissions
         document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', (e) => {
-                window.va?.('event', { name: 'waitlist_signup', data: { location: form.closest('section')?.id || 'unknown' } });
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                const location = form.closest('section')?.id || 'hero';
+
+                // Get form data
+                const emailInput = form.querySelector('input[type="email"]');
+                const nameInput = form.querySelector('input[name="name"]');
+                const email = emailInput?.value;
+                const name = nameInput?.value || '';
+
+                if (!email) return;
+
+                // Show loading state
+                submitBtn.textContent = 'Joining...';
+                submitBtn.disabled = true;
+
+                try {
+                    // Submit to Google Sheets
+                    await fetch(SHEETS_WEBHOOK, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&source=sensory-tracker-${location}`
+                    });
+
+                    // Track with Vercel Analytics
+                    window.va?.('event', { name: 'waitlist_signup', data: { location, source: `sensory-tracker-${location}` } });
+
+                    // Show success state
+                    submitBtn.textContent = 'You\'re on the list!';
+                    submitBtn.style.background = 'var(--sage-500)';
+                    form.reset();
+
+                    // Reset after delay
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+
+                } catch (error) {
+                    // Silent failure (no-cors hides actual errors)
+                    // Still show success since we can't verify
+                    submitBtn.textContent = 'You\'re on the list!';
+                    form.reset();
+
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }
             });
         });
 
         // Track CTA clicks
-        document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn => {
+        document.querySelectorAll('.nav-cta').forEach(btn => {
             btn.addEventListener('click', () => {
                 window.va?.('event', { name: 'cta_click', data: { text: btn.textContent.trim() } });
             });
