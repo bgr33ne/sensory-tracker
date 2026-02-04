@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Sensory Tracking? A Guide for Parents & Caregivers</title>
+    <meta name="description" content="Learn what sensory tracking is, why it helps children with autism and SPD, and how to start tracking sensory experiences to identify triggers and patterns.">
+    <meta name="keywords" content="what is sensory tracking, sensory processing tracking, sensory diary, autism sensory log, SPD tracking, sensory triggers">
+
+    <meta property="og:title" content="What is Sensory Tracking? A Guide for Parents & Caregivers">
+    <meta property="og:description" content="Learn what sensory tracking is, why it helps children with autism and SPD, and how to start tracking sensory experiences.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://sensorytracker.com/what-is-sensory-tracking">
+
+    <link rel="canonical" href="https://sensorytracker.com/what-is-sensory-tracking">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --sage-50: #f6f7f4;
+            --sage-100: #e8ebe3;
+            --sage-200: #d4dac9;
+            --sage-300: #b5c0a5;
+            --sage-400: #94a47d;
+            --sage-500: #768a5e;
+            --sage-600: #5c6e49;
+            --sage-700: #49573b;
+            --warm-50: #fdfcfb;
+            --warm-100: #f9f6f3;
+            --warm-200: #f3ebe4;
+            --coral-400: #e8a598;
+            --text-primary: #2d3428;
+            --text-secondary: #5a6152;
+            --text-muted: #7d856f;
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background: var(--warm-50);
+            line-height: 1.7;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            background: rgba(253, 252, 251, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(180, 192, 165, 0.2);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-cta {
+            background: var(--sage-600);
+            color: white;
+            padding: 0.65rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--sage-700);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--sage-600);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 2.75rem);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--sage-100);
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 2.5rem 0 1rem;
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 2rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        ul, ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--sage-50);
+            border-left: 4px solid var(--sage-500);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--text-primary);
+        }
+
+        .cta-box {
+            background: white;
+            border: 2px solid var(--sage-200);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            margin-top: 0;
+        }
+
+        .cta-box p {
+            color: var(--text-secondary);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--sage-600);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--sage-700);
+            transform: translateY(-2px);
+        }
+
+        .related-links {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--sage-100);
+        }
+
+        .related-links h3 {
+            margin-top: 0;
+        }
+
+        .related-links ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .related-links a {
+            color: var(--sage-600);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .related-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--text-primary);
+            color: var(--sage-200);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--sage-300);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">Sensory Tracker</a>
+            <a href="/#waitlist" class="nav-cta">Join Waitlist</a>
+        </div>
+    </header>
+
+    <main>
+        <nav class="breadcrumb">
+            <a href="/">Home</a> → What is Sensory Tracking?
+        </nav>
+
+        <article>
+            <h1>What is Sensory Tracking?</h1>
+
+            <p class="intro">Sensory tracking is the practice of systematically recording sensory experiences—sounds, lights, textures, smells, tastes, and movement—to identify patterns, triggers, and strategies that help or harm. For families navigating autism, SPD, or ADHD, it transforms overwhelming chaos into actionable insight.</p>
+
+            <h2>Why Track Sensory Experiences?</h2>
+
+            <p>Children with sensory processing differences experience the world intensely. A fluorescent light that you barely notice might feel unbearable. The texture of a shirt tag could trigger a meltdown. The hum of a refrigerator might make concentration impossible.</p>
+
+            <p>The challenge? These triggers aren't always obvious. Parents often describe feeling blindsided by reactions, unable to predict what will cause distress. Sensory tracking solves this by revealing patterns that aren't visible in the moment.</p>
+
+            <div class="highlight-box">
+                <p><strong>Key insight:</strong> Research shows that up to 90% of children with autism and 64% of children with ADHD experience atypical sensory processing. Tracking helps move from reactive crisis management to proactive support.</p>
+            </div>
+
+            <h2>What Do You Track?</h2>
+
+            <p>Sensory tracking captures information across multiple dimensions:</p>
+
+            <ul>
+                <li><strong>Sensory inputs</strong> — What sounds, lights, textures, smells, or movements were present?</li>
+                <li><strong>Environment</strong> — Where did it happen? Grocery store, classroom, car, home?</li>
+                <li><strong>Time and context</strong> — Morning routine? After school? During transitions?</li>
+                <li><strong>Response</strong> — What behaviors occurred? Covering ears, stimming, meltdown, withdrawal?</li>
+                <li><strong>Intensity</strong> — How severe was the reaction? How long did it last?</li>
+                <li><strong>Strategies tried</strong> — What helped? What made it worse?</li>
+            </ul>
+
+            <h2>How Sensory Tracking Helps</h2>
+
+            <h3>Identify Triggers Before They Escalate</h3>
+            <p>Over time, patterns emerge. You might discover that meltdowns spike after visits to bright, noisy stores—or that transitions are hardest when your child is already tired. This knowledge lets you prepare, avoid, or mitigate triggers before they escalate.</p>
+
+            <h3>Build a Toolkit of What Works</h3>
+            <p>Not all strategies work for everyone. Noise-canceling headphones might help one child while making another feel more anxious. Tracking which strategies work (and which don't) helps you build a personalized toolkit—a <a href="/sensory-diet-tracker">sensory diet</a>—tailored to your child's unique needs.</p>
+
+            <h3>Communicate Effectively with Your Care Team</h3>
+            <p>Therapists and doctors only see your child for limited windows. Sensory tracking gives them real-world data: actual patterns, actual triggers, actual responses. This transforms appointments from "trying to remember what happened" to data-driven discussions about what's working. <a href="/share-sensory-data-therapist">Learn more about sharing data with your care team →</a></p>
+
+            <h3>Reduce Overwhelm for Everyone</h3>
+            <p>When you understand what's happening, you feel less helpless. When your child feels understood, their stress decreases too. Sensory tracking doesn't eliminate challenges—but it replaces chaos with clarity.</p>
+
+            <h2>Traditional vs. Modern Sensory Tracking</h2>
+
+            <p>Historically, sensory tracking meant paper diaries, complex forms, or spreadsheets. The problem? During a stressful moment, the last thing anyone wants to do is fill out a form.</p>
+
+            <p>Modern sensory tracking tools use voice logging and AI to capture data effortlessly. You simply describe what's happening—"really loud in here, he's covering his ears and rocking"—and the system captures, structures, and analyzes it automatically.</p>
+
+            <div class="cta-box">
+                <h3>Try Sensory Tracker</h3>
+                <p>Voice-powered sensory tracking designed for real life. Log experiences effortlessly, discover patterns with AI, and share insights with your care team.</p>
+                <a href="/#waitlist" class="btn-primary">Join the Waitlist</a>
+            </div>
+
+            <h2>Getting Started with Sensory Tracking</h2>
+
+            <p>You don't need an app to start tracking. Begin with these steps:</p>
+
+            <ol>
+                <li><strong>Pick one time of day</strong> — Don't try to track everything. Start with mornings, or mealtimes, or after-school transitions.</li>
+                <li><strong>Note the basics</strong> — What sensory inputs were present? What happened? What helped?</li>
+                <li><strong>Look for patterns weekly</strong> — After a week, review your notes. What stands out?</li>
+                <li><strong>Share with your team</strong> — Bring your observations to your next therapist appointment.</li>
+            </ol>
+
+            <p>As you get comfortable, you can expand what you track—or use a dedicated tool like Sensory Tracker to automate the process.</p>
+
+            <div class="related-links">
+                <h3>Related Resources</h3>
+                <ul>
+                    <li><a href="/sensory-tracking-for-autism">Sensory Tracking for Autism: A Parent's Guide</a></li>
+                    <li><a href="/sensory-diet-tracker">What is a Sensory Diet Tracker?</a></li>
+                    <li><a href="/share-sensory-data-therapist">How to Share Sensory Data with Your Therapist</a></li>
+                    <li><a href="/">Back to Sensory Tracker →</a></li>
+                </ul>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p><a href="/">Sensory Tracker</a> · <a href="/#waitlist">Join Waitlist</a> · <a href="/#faq">FAQ</a></p>
+        <p style="margin-top: 1rem; color: var(--sage-400);">© Sensory Tracker 2026</p>
+    </footer>
+</body>
+</html>

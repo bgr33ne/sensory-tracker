@@ -653,6 +653,50 @@
             color: var(--sage-400);
         }
 
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 2rem;
+            background: var(--warm-50);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            padding: 1.75rem;
+            border: 1px solid var(--sage-100);
+        }
+
+        .faq-item h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .faq-item a {
+            color: var(--sage-600);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .faq-item a:hover {
+            text-decoration: underline;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             header {
@@ -683,6 +727,10 @@
             .footer-inner {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1051,6 +1099,48 @@
                         </div>
                         <h3>Therapists & Clinicians</h3>
                         <p>Get real-world data between sessions. Design better sensory diets with actual effectiveness tracking.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq" id="faq">
+            <div class="section-inner">
+                <div class="section-header">
+                    <p class="section-label">Questions</p>
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+
+                <div class="faq-grid">
+                    <article class="faq-item fade-up">
+                        <h3>What is sensory tracking?</h3>
+                        <p>Sensory tracking is the practice of monitoring and recording sensory experiences—sounds, lights, textures, smells, and more—to identify patterns and triggers. It helps individuals with sensory processing differences (like autism or SPD) and their caregivers understand what environments and situations cause distress or comfort. <a href="/what-is-sensory-tracking">Learn more about sensory tracking →</a></p>
+                    </article>
+
+                    <article class="faq-item fade-up">
+                        <h3>Who is Sensory Tracker for?</h3>
+                        <p>Sensory Tracker is designed for families of children with sensory processing needs (autism, SPD, ADHD), caregivers, educators, and healthcare professionals like occupational therapists. Anyone involved in supporting someone with sensory sensitivities can benefit from coordinated tracking and insights.</p>
+                    </article>
+
+                    <article class="faq-item fade-up">
+                        <h3>How does voice logging work?</h3>
+                        <p>Instead of filling out forms during stressful moments, you simply speak. Describe what's happening—"loud noises at the grocery store, covering ears, very upset"—and our AI captures and structures the data automatically. It's faster, easier, and captures richer context than checkboxes ever could.</p>
+                    </article>
+
+                    <article class="faq-item fade-up">
+                        <h3>What is a sensory diet?</h3>
+                        <p>A sensory diet is a personalized plan of activities designed by occupational therapists to help regulate sensory input throughout the day. Sensory Tracker helps you log which strategies work and share results with your OT. <a href="/sensory-diet-tracker">Learn about sensory diet tracking →</a></p>
+                    </article>
+
+                    <article class="faq-item fade-up">
+                        <h3>Can I share data with my child's therapist?</h3>
+                        <p>Yes! Sensory Tracker is built for collaboration. Invite family members, teachers, caregivers, and therapists to view logs and insights. Everyone stays aligned with real data instead of trying to remember details at appointments. <a href="/share-sensory-data-therapist">Learn about sharing with your care team →</a></p>
+                    </article>
+
+                    <article class="faq-item fade-up">
+                        <h3>When will Sensory Tracker launch?</h3>
+                        <p>We're currently in development. Join our waitlist to be notified when we launch and get early access. We're building this alongside families and therapists to ensure it truly meets real-world needs.</p>
                     </article>
                 </div>
             </div>
