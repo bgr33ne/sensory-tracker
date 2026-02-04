@@ -8,6 +8,12 @@ Landing page and SEO content for Sensory Tracker - a voice-powered sensory track
 **Target audience:** Parents (primary buyers), children (users), medical professionals (OTs, therapists)
 **Stage:** Pre-launch landing page
 
+## Live URLs
+
+- **Production:** https://www.sensorytracker.com
+- **Vercel:** https://sensory-tracker.vercel.app
+- **GitHub:** https://github.com/bgr33ne/sensory-tracker
+
 ## Tech Stack
 
 - **Frontend:** Static HTML/CSS/JS (no framework)
@@ -68,8 +74,8 @@ local → push to GitHub → Vercel auto-deploys
 
 **Environments:**
 - **Local:** `http://localhost:8085`
-- **Staging:** Vercel preview deployments (auto-generated URLs)
-- **Production:** `https://sensorytracker.com` (or Vercel URL)
+- **Staging:** Vercel preview deployments (auto-generated URLs on PRs)
+- **Production:** `https://www.sensorytracker.com`
 
 ## Vercel Configuration
 
