@@ -1,0 +1,6 @@
+# Sensory Tracker - www.sensorytracker.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.sensorytracker.com/sitemap.xml

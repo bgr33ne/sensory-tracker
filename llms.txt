@@ -1,0 +1,32 @@
+# Sensory Tracker
+
+> Voice-powered sensory tracking for families, caregivers, and therapists supporting individuals with autism, ADHD, and sensory processing differences.
+
+Sensory Tracker is an app that helps track, understand, and support sensory needs. It uses voice logging to capture sensory experiences effortlessly, AI to identify patterns and triggers, and collaborative tools to share insights with care teams.
+
+## Key Features
+
+- **Voice Logging**: Speak to log sensory experiences instead of filling out forms
+- **AI Pattern Detection**: Automatically identifies triggers, patterns, and effective strategies
+- **Strategy Tracking**: Record sensory diet activities and rate their effectiveness over time
+- **Care Team Collaboration**: Share data with family, caregivers, teachers, and therapists
+
+## Who It's For
+
+- Parents and families of children with sensory processing differences
+- Caregivers and educators supporting individuals with sensory needs
+- Occupational therapists and clinicians designing sensory interventions
+- Individuals with autism, ADHD, or SPD tracking their own sensory experiences
+
+## Key Topics Covered
+
+- [What is Sensory Tracking?](/what-is-sensory-tracking): Introduction to sensory tracking and why it helps
+- [Sensory Tracking for Autism](/sensory-tracking-for-autism): How tracking helps autistic individuals (90% experience atypical sensory processing)
+- [Sensory Tracking for ADHD](/sensory-tracking-for-adhd): Managing sensory sensitivities in ADHD (50-64% affected)
+- [Sensory Diet Tracker](/sensory-diet-tracker): How to track and optimize sensory diet strategies
+- [Sharing Data with Therapists](/share-sensory-data-therapist): Collaborating with OTs, doctors, and care teams
+
+## Contact
+
+Website: https://www.sensorytracker.com
+Status: Currently in development (waitlist open)

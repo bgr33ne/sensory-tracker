@@ -13,6 +13,91 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sensorytracker.com">
 
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://www.sensorytracker.com/#organization",
+                "name": "Sensory Tracker",
+                "url": "https://www.sensorytracker.com",
+                "description": "Voice-powered sensory tracking app for families, caregivers, and therapists supporting individuals with autism, ADHD, and sensory processing differences."
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://www.sensorytracker.com/#website",
+                "url": "https://www.sensorytracker.com",
+                "name": "Sensory Tracker",
+                "publisher": {"@id": "https://www.sensorytracker.com/#organization"}
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://www.sensorytracker.com/",
+                "url": "https://www.sensorytracker.com/",
+                "name": "Sensory Tracker - Track, Understand & Support Sensory Needs",
+                "isPartOf": {"@id": "https://www.sensorytracker.com/#website"},
+                "about": {"@id": "https://www.sensorytracker.com/#organization"},
+                "description": "The easiest way for families and care teams to track, understand, and support sensory needs. Voice logging, AI insights, and seamless collaboration."
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is sensory tracking?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Sensory tracking is the practice of monitoring and recording sensory experiences—sounds, lights, textures, smells, and more—to identify patterns and triggers. It helps individuals with sensory processing differences (like autism or SPD) and their caregivers understand what environments and situations cause distress or comfort."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Who is Sensory Tracker for?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Sensory Tracker is designed for families of children with sensory processing needs (autism, SPD, ADHD), caregivers, educators, and healthcare professionals like occupational therapists. Anyone involved in supporting someone with sensory sensitivities can benefit from coordinated tracking and insights."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does voice logging work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Instead of filling out forms during stressful moments, you simply speak. Describe what's happening—'loud noises at the grocery store, covering ears, very upset'—and our AI captures and structures the data automatically. It's faster, easier, and captures richer context than checkboxes ever could."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is a sensory diet?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A sensory diet is a personalized plan of activities designed by occupational therapists to help regulate sensory input throughout the day. Sensory Tracker helps you log which strategies work and share results with your OT."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I share data with my child's therapist?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes! Sensory Tracker is built for collaboration. Invite family members, teachers, caregivers, and therapists to view logs and insights. Everyone stays aligned with real data instead of trying to remember details at appointments."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "When will Sensory Tracker launch?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "We're currently in development. Join our waitlist to be notified when we launch and get early access. We're building this alongside families and therapists to ensure it truly meets real-world needs."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
