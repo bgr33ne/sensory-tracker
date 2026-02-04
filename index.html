@@ -1178,6 +1178,9 @@
         </div>
     </footer>
 
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
     <script>
         // Scroll animation observer
         const observer = new IntersectionObserver((entries) => {
@@ -1189,6 +1192,20 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Track waitlist form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                window.va?.('event', { name: 'waitlist_signup', data: { location: form.closest('section')?.id || 'unknown' } });
+            });
+        });
+
+        // Track CTA clicks
+        document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn => {
+            btn.addEventListener('click', () => {
+                window.va?.('event', { name: 'cta_click', data: { text: btn.textContent.trim() } });
+            });
+        });
     </script>
 </body>
 </html>
