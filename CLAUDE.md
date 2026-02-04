@@ -33,6 +33,8 @@ Landing page and SEO content for Sensory Tracker - a voice-powered sensory track
 ├── sensory-diet-tracker.html       # SEO: OT/therapy intent
 ├── share-sensory-data-therapist.html # SEO: collaboration intent
 ├── sitemap.xml                     # For Google indexing
+├── robots.txt                      # Crawler directives
+├── llms.txt                        # AI/LLM crawler info
 ├── CLAUDE.md                       # This file
 └── vercel.json                     # Vercel config (URL rewrites)
 ```
@@ -140,13 +142,36 @@ The `vercel.json` file handles:
 - **Audience awareness:** Parents are stressed; content should feel supportive
 - **No fluff:** Every section should provide value
 
-## Form Integration (TODO)
+## Form Integration
 
-Waitlist forms currently don't submit anywhere. Options:
-- Formspree
-- Netlify Forms
-- Custom backend
-- Vercel serverless function → database
+Waitlist forms submit to Google Sheets via Apps Script webhook (shared with personal-portfolio project).
+
+**Webhook:** Google Apps Script (same as portfolio)
+**Format:** `application/x-www-form-urlencoded` with `mode: 'no-cors'`
+**Fields:** `email`, `name`, `source`
+**Source values:**
+- `sensory-tracker-hero` - Hero section email form
+- `sensory-tracker-waitlist` - Bottom CTA form
+
+## Analytics
+
+**Vercel Analytics** enabled on all pages via `/_vercel/insights/script.js`
+
+**Events tracked:**
+- `waitlist_signup` - Form submissions (with location data)
+- `cta_click` - CTA button clicks
+
+## SEO Files
+
+- **robots.txt** - Allows all crawlers, points to sitemap
+- **llms.txt** - Product summary for AI crawlers (emerging standard)
+- **Schema.org JSON-LD** - On all pages:
+  - index.html: Organization, WebSite, WebPage, FAQPage
+  - Article pages: Article schema
+
+**Submitted to:**
+- Google Search Console
+- Bing Webmaster Tools
 
 ## Commands Reference
 
