@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensory Tracker - Track, Understand & Support Sensory Needs | App for Autism & SPD</title>
+    <meta name="description" content="Sensory Tracker helps families, caregivers, and medical professionals track sensory processing needs. Voice logging, AI analysis, and collaborative tools for autism, SPD, and ADHD support.">
+    <meta name="keywords" content="sensory processing disorder app, sensory tracker, autism sensory support, SPD tracking, sensory diet tracker, occupational therapy app, sensory needs tracker, ADHD sensory support">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sensory Tracker - Track, Understand & Support Sensory Needs">
+    <meta property="og:description" content="The easiest way for families and care teams to track, understand, and support sensory needs. Voice logging, AI insights, and seamless collaboration.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sensorytracker.com">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --sage-50: #f6f7f4;
+            --sage-100: #e8ebe3;
+            --sage-200: #d4dac9;
+            --sage-300: #b5c0a5;
+            --sage-400: #94a47d;
+            --sage-500: #768a5e;
+            --sage-600: #5c6e49;
+            --sage-700: #49573b;
+            --sage-800: #3c4732;
+            --sage-900: #343d2d;
+
+            --warm-50: #fdfcfb;
+            --warm-100: #f9f6f3;
+            --warm-200: #f3ebe4;
+            --warm-300: #e8d9cc;
+            --warm-400: #d4b89e;
+
+            --coral-400: #e8a598;
+            --coral-500: #d4847a;
+
+            --text-primary: #2d3428;
+            --text-secondary: #5a6152;
+            --text-muted: #7d856f;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background: var(--warm-50);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Organic blob shapes */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--sage-200);
+            top: -200px;
+            right: -200px;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--warm-300);
+            bottom: 10%;
+            left: -100px;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--coral-400);
+            opacity: 0.3;
+            top: 50%;
+            right: 10%;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            background: rgba(253, 252, 251, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(180, 192, 165, 0.2);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--sage-400) 0%, var(--sage-600) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        .nav-cta {
+            background: var(--sage-600);
+            color: white;
+            padding: 0.65rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--sage-700);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 6rem;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--sage-100);
+            color: var(--sage-700);
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        /* Email Form */
+        .email-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 460px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 240px;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--sage-200);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--sage-400);
+            box-shadow: 0 0 0 4px rgba(148, 164, 125, 0.15);
+        }
+
+        .email-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .btn-primary {
+            background: var(--sage-600);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            background: var(--sage-700);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(92, 110, 73, 0.25);
+        }
+
+        .hero-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Hero illustration */
+        .hero-illustration {
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .hero-visual {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Features */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--sage-50);
+            position: relative;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--sage-600);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--sage-100);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(45, 52, 40, 0.08);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--sage-100) 0%, var(--sage-200) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--sage-700);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* How it works */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: var(--warm-50);
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .step:nth-child(even) {
+            direction: rtl;
+        }
+
+        .step:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .step-content {
+            max-width: 480px;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--sage-600);
+            color: white;
+            border-radius: 50%;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .step h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .step-visual {
+            background: var(--sage-100);
+            border-radius: 24px;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .step-visual svg {
+            width: 60%;
+            height: 60%;
+            stroke: var(--sage-600);
+            fill: none;
+            stroke-width: 1.2;
+        }
+
+        /* For who */
+        .for-who {
+            padding: 6rem 2rem;
+            background: var(--sage-600);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .for-who::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            pointer-events: none;
+        }
+
+        .for-who .section-label {
+            color: var(--sage-200);
+        }
+
+        .for-who h2 {
+            color: white;
+        }
+
+        .personas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .persona {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .persona-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .persona-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .persona h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .persona p {
+            color: var(--sage-200);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: var(--warm-50);
+            position: relative;
+        }
+
+        .cta-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            padding: 4rem 3rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(45, 52, 40, 0.08);
+            border: 1px solid var(--sage-100);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sage-400), var(--sage-600), var(--sage-400));
+        }
+
+        .cta-card h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-card p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 2px solid var(--sage-200);
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--sage-400);
+            box-shadow: 0 0 0 4px rgba(148, 164, 125, 0.15);
+        }
+
+        .waitlist-form .btn-primary {
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: var(--sage-200);
+            padding: 3rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--sage-300);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: var(--sage-400);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 4rem;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .step:nth-child(even) {
+                direction: ltr;
+            }
+
+            .step-visual {
+                order: -1;
+            }
+
+            .cta-card {
+                padding: 3rem 1.5rem;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-illustration {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Animated connection lines */
+        @keyframes flowIn {
+            0% { stroke-dashoffset: 20; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes flowOut {
+            0% { stroke-dashoffset: -20; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        .flow-line-in {
+            stroke-dasharray: 6 4;
+            animation: flowIn 2.5s linear infinite;
+        }
+
+        .flow-line-out {
+            stroke-dasharray: 6 4;
+            animation: flowOut 2.5s linear infinite;
+        }
+
+        /* Scroll animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                </div>
+                Sensory Tracker
+            </a>
+            <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+
+            <div class="hero-content">
+                <div class="hero-badge">
+                    Coming Soon
+                </div>
+
+                <h1>Sensory Tracking Made Easy</h1>
+
+                <p class="hero-subtitle">
+                    Designed for individuals, families, and caregivers. Sensory Tracker is the easiest way to track, understand, and support sensory needs.
+                </p>
+
+                <form class="email-form" action="#" method="POST">
+                    <input type="email" class="email-input" placeholder="Enter your email" required aria-label="Email address">
+                    <button type="submit" class="btn-primary">Join the Waitlist</button>
+                </form>
+                <p class="hero-note">Be first to know when we launch. No spam, ever.</p>
+
+                <div class="hero-illustration">
+                    <svg class="hero-visual" viewBox="0 0 600 340" fill="none">
+                        <!-- Background subtle circle -->
+                        <circle cx="300" cy="170" r="140" fill="var(--sage-100)" opacity="0.4"/>
+                        <circle cx="300" cy="170" r="100" fill="var(--sage-50)" opacity="0.6"/>
+
+                        <!-- ===== LEFT SIDE: SENSORY INPUTS ===== -->
+
+                        <!-- Sound - top left (Lucide ear) -->
+                        <g transform="translate(40, 60)">
+                            <circle cx="30" cy="30" r="28" fill="white" stroke="var(--sage-400)" stroke-width="2"/>
+                            <g transform="translate(17, 15) scale(1.2)" stroke="var(--sage-600)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0"/>
+                                <path d="M15 8.5a2.5 2.5 0 0 0-5 0v1a2 2 0 1 1 0 4"/>
+                            </g>
+                        </g>
+                        <text x="70" y="130" font-family="var(--font-body)" font-size="11" fill="var(--text-muted)" text-anchor="middle">Sound</text>
+
+                        <!-- Sight - middle left (Lucide eye) -->
+                        <g transform="translate(20, 145)">
+                            <circle cx="30" cy="30" r="28" fill="white" stroke="var(--sage-400)" stroke-width="2"/>
+                            <g transform="translate(18, 18) scale(1.1)" stroke="var(--sage-600)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
+                                <circle cx="12" cy="12" r="3" fill="var(--sage-600)"/>
+                            </g>
+                        </g>
+                        <text x="50" y="215" font-family="var(--font-body)" font-size="11" fill="var(--text-muted)" text-anchor="middle">Sight</text>
+
+                        <!-- Touch - bottom left (Lucide hand) -->
+                        <g transform="translate(40, 230)">
+                            <circle cx="30" cy="30" r="28" fill="white" stroke="var(--sage-400)" stroke-width="2"/>
+                            <g transform="translate(17, 16) scale(1.15)" stroke="var(--sage-600)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2"/>
+                                <path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/>
+                                <path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/>
+                                <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+                            </g>
+                        </g>
+                        <text x="70" y="300" font-family="var(--font-body)" font-size="11" fill="var(--text-muted)" text-anchor="middle">Touch</text>
+
+                        <!-- ===== ANIMATED CONNECTION LINES TO CENTER ===== -->
+
+                        <!-- Sound to phone -->
+                        <path class="flow-line-in" d="M98 90 Q150 100 200 130" stroke="var(--coral-400)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+                        <!-- Eye to phone -->
+                        <path class="flow-line-in" d="M78 175 Q140 175 200 170" stroke="var(--coral-400)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+                        <!-- Touch to phone -->
+                        <path class="flow-line-in" d="M98 260 Q150 245 200 210" stroke="var(--coral-400)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+                        <!-- ===== CENTER: THE APP ===== -->
+
+                        <!-- Phone body with glow -->
+                        <defs>
+                            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="8" result="blur"/>
+                                <feMerge>
+                                    <feMergeNode in="blur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+
+                        <rect x="230" y="95" width="140" height="150" rx="20" fill="var(--sage-600)" filter="url(#glow)"/>
+                        <rect x="235" y="100" width="130" height="140" rx="18" fill="white" stroke="var(--sage-600)" stroke-width="2"/>
+
+                        <!-- Screen content -->
+                        <rect x="248" y="118" width="104" height="90" rx="6" fill="var(--sage-50)"/>
+
+                        <!-- Mini chart inside screen -->
+                        <path d="M260 185 L280 165 L300 175 L320 150 L340 160" stroke="var(--sage-500)" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <circle cx="280" cy="165" r="3" fill="var(--sage-600)"/>
+                        <circle cx="300" cy="175" r="3" fill="var(--sage-600)"/>
+                        <circle cx="320" cy="150" r="3" fill="var(--sage-600)"/>
+
+                        <!-- Data points on screen -->
+                        <circle cx="265" cy="135" r="6" fill="var(--coral-400)" opacity="0.8"/>
+                        <circle cx="285" cy="130" r="4" fill="var(--sage-400)"/>
+                        <circle cx="302" cy="138" r="5" fill="var(--sage-500)"/>
+                        <rect x="315" y="128" width="25" height="8" rx="2" fill="var(--sage-300)"/>
+
+                        <!-- Home button -->
+                        <circle cx="300" cy="222" r="8" stroke="var(--sage-300)" stroke-width="2" fill="none"/>
+
+                        <!-- App label -->
+                        <text x="300" y="268" font-family="var(--font-display)" font-size="14" fill="var(--text-primary)" text-anchor="middle" font-weight="600">Sensory Tracker</text>
+
+                        <!-- ===== RIGHT SIDE: CARE TEAM ===== -->
+
+                        <!-- Family - top right (Lucide users) -->
+                        <g transform="translate(510, 55)">
+                            <circle cx="30" cy="30" r="28" fill="white" stroke="var(--sage-400)" stroke-width="2"/>
+                            <g transform="translate(17, 16) scale(1.15)" stroke="var(--sage-600)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </g>
+                        </g>
+                        <text x="540" y="125" font-family="var(--font-body)" font-size="11" fill="var(--text-muted)" text-anchor="middle">Family</text>
+
+                        <!-- Caregiver - middle right (Lucide user + heart) -->
+                        <g transform="translate(530, 140)">
+                            <circle cx="30" cy="30" r="28" fill="white" stroke="var(--sage-400)" stroke-width="2"/>
+                            <g transform="translate(17, 14) scale(1.15)" stroke="var(--sage-600)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </g>
+                            <!-- Small heart badge -->
+                            <g transform="translate(36, 38)">
+                                <path d="M6 3 C5 2 3 2 3 4 C3 6 6 8 6 8 C6 8 9 6 9 4 C9 2 7 2 6 3" fill="var(--sage-200)" stroke="var(--sage-500)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                        <text x="560" y="210" font-family="var(--font-body)" font-size="11" fill="var(--text-muted)" text-anchor="middle">Caregiver</text>
+
+                        <!-- Therapist - bottom right (Lucide user + activity) -->
+                        <g transform="translate(510, 225)">
+                            <circle cx="30" cy="30" r="28" fill="white" stroke="var(--sage-400)" stroke-width="2"/>
+                            <g transform="translate(17, 14) scale(1.15)" stroke="var(--sage-600)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </g>
+                            <!-- Small activity/heartbeat badge -->
+                            <g transform="translate(30, 38)">
+                                <path d="M0 4 L4 4 L6 1 L8 7 L10 4 L14 4" stroke="var(--sage-500)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                        <text x="540" y="295" font-family="var(--font-body)" font-size="11" fill="var(--text-muted)" text-anchor="middle">Therapist</text>
+
+                        <!-- ===== ANIMATED CONNECTION LINES FROM CENTER ===== -->
+
+                        <!-- Phone to Family -->
+                        <path class="flow-line-out" d="M400 130 Q450 100 510 85" stroke="var(--coral-400)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+                        <!-- Phone to Caregiver -->
+                        <path class="flow-line-out" d="M400 170 Q460 170 530 170" stroke="var(--coral-400)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+                        <!-- Phone to Therapist -->
+                        <path class="flow-line-out" d="M400 210 Q450 240 510 255" stroke="var(--coral-400)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+                        <!-- ===== FLOW LABELS ===== -->
+                        <text x="155" y="160" font-family="var(--font-body)" font-size="10" fill="var(--coral-500)" font-weight="500">Log</text>
+                        <text x="445" y="155" font-family="var(--font-body)" font-size="10" fill="var(--coral-500)" font-weight="500">Share</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features" id="features">
+            <div class="section-inner">
+                <div class="section-header">
+                    <p class="section-label">Features</p>
+                    <h2>Everything you need to understand sensory needs</h2>
+                </div>
+
+                <div class="features-grid">
+                    <article class="feature-card fade-up">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                        </div>
+                        <h3>Voice Logging</h3>
+                        <p>Use voice to conduct body scans and environmental surveys to capture rich sensory data effortlessly. No more forms to fill out!</p>
+                    </article>
+
+                    <article class="feature-card fade-up">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h3>AI Insights</h3>
+                        <p>AI analyzes your data to reveal patterns, identify triggers, and track which strategies actually work—building a personalized toolkit.</p>
+                    </article>
+
+                    <article class="feature-card fade-up">
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                        </div>
+                        <h3>Track Strategies</h3>
+                        <p>Record sensory strategies and rate their effectiveness over time. Build a personalized toolkit of what actually works for your unique needs.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="how-it-works">
+            <div class="section-inner">
+                <div class="section-header">
+                    <p class="section-label">How It Works</p>
+                    <h2>From chaos to clarity</h2>
+                </div>
+
+                <div class="steps">
+                    <div class="step fade-up">
+                        <div class="step-content">
+                            <div class="step-number">1</div>
+                            <h3>Log sensory experiences</h3>
+                            <p>Quickly capture sensory data using voice or simple inputs. Track what's happening in the moment—sounds, textures, lights, emotions—without complicated forms.</p>
+                        </div>
+                        <div class="step-visual">
+                            <svg viewBox="0 0 100 100">
+                                <!-- Phone outline -->
+                                <rect x="30" y="15" width="40" height="70" rx="6" stroke-width="2"/>
+                                <!-- Microphone icon (Lucide mic) -->
+                                <path d="M50 32 a5 5 0 0 0-5 5 v10 a5 5 0 0 0 10 0 v-10 a5 5 0 0 0-5-5" stroke-width="2"/>
+                                <path d="M40 47 v3 a10 10 0 0 0 20 0 v-3" stroke-width="2"/>
+                                <path d="M50 60 v8" stroke-width="2"/>
+                                <path d="M44 68 h12" stroke-width="2" stroke-linecap="round"/>
+                                <!-- Home indicator -->
+                                <path d="M42 78 h16" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="step fade-up">
+                        <div class="step-content">
+                            <div class="step-number">2</div>
+                            <h3>Discover patterns</h3>
+                            <p>AI analyzes your data to reveal triggers, patterns, and trends you might miss. Understand what environments and situations help or harm.</p>
+                        </div>
+                        <div class="step-visual">
+                            <svg viewBox="0 0 100 100">
+                                <rect x="15" y="20" width="70" height="55" rx="4" stroke-width="2"/>
+                                <path d="M25 55 L40 45 L55 50 L70 30" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="40" cy="45" r="3" fill="currentColor"/>
+                                <circle cx="55" cy="50" r="3" fill="currentColor"/>
+                                <circle cx="70" cy="30" r="3" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="step fade-up">
+                        <div class="step-content">
+                            <div class="step-number">3</div>
+                            <h3>Share with your care team</h3>
+                            <p>Invite family members, teachers, therapists, and doctors. Everyone stays aligned with real data—no more trying to remember details at appointments.</p>
+                        </div>
+                        <div class="step-visual">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="35" r="12" stroke-width="2"/>
+                                <circle cx="25" cy="60" r="10" stroke-width="2"/>
+                                <circle cx="75" cy="60" r="10" stroke-width="2"/>
+                                <line x1="40" y1="42" x2="32" y2="52" stroke-width="2"/>
+                                <line x1="60" y1="42" x2="68" y2="52" stroke-width="2"/>
+                                <line x1="35" y1="60" x2="65" y2="60" stroke-width="2" stroke-dasharray="4 3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- For Who -->
+        <section class="for-who">
+            <div class="section-inner">
+                <div class="section-header">
+                    <p class="section-label">Who It's For</p>
+                    <h2>Built for the whole care circle</h2>
+                </div>
+
+                <div class="personas">
+                    <article class="persona fade-up">
+                        <div class="persona-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <h3>Parents & Families</h3>
+                        <p>Finally understand what triggers meltdowns. Track patterns across home, school, and outings to create calmer days.</p>
+                    </article>
+
+                    <article class="persona fade-up">
+                        <div class="persona-icon">
+                            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3>Caregivers & Educators</h3>
+                        <p>Stay connected with families and support sensory needs consistently. Log observations and see what strategies work.</p>
+                    </article>
+
+                    <article class="persona fade-up">
+                        <div class="persona-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <h3>Therapists & Clinicians</h3>
+                        <p>Get real-world data between sessions. Design better sensory diets with actual effectiveness tracking.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section" id="waitlist">
+            <div class="cta-card fade-up">
+                <h2>Join the waitlist today</h2>
+                <p>Be among the first to experience sensory tracking that actually works. We'll notify you when we launch.</p>
+
+                <form class="waitlist-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Join Waitlist</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-logo">Sensory Tracker</span>
+            <nav class="footer-links">
+                <a href="#features">Features</a>
+                <a href="#waitlist">Join Waitlist</a>
+            </nav>
+            <span class="footer-copy">&copy; Sensory Tracker 2026</span>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
